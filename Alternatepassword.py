@@ -5,6 +5,8 @@ def is_acceptable_password(password: str) -> bool:
     rule1 = len(password) > 6
     rule2 = any(char.isdigit() for char in password)
     rule3 = any(char.isalpha() for char in password)
+    rule4 = 'password' not in password.lower()
+    rule5 = 'PASSWORD' not in password.upper()
     if len(password) > 9:
         rule2 = rule3 = True
-    return all([rule1, rule2, rule3])
+    return all([rule1, rule2, rule3, rule4, rule5])
